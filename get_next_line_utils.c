@@ -65,7 +65,6 @@ char *ft_strdup(const char *s)
 char *ft_strnjoin(char *line, char *buffer, ssize_t length)
 {
 	size_t line_len;
-	size_t buffer_len;
 	int i;
 	int j;
 	char *marge;
@@ -73,7 +72,6 @@ char *ft_strnjoin(char *line, char *buffer, ssize_t length)
 	i = 0;
 	j = 0;
 	line_len = ft_strlen(line);
-	buffer_len = ft_strlen(buffer);
 	marge = malloc(sizeof(char) * line_len + length + 1);
 	while (i < line_len)
 		marge[j++] = line[i++];
@@ -81,49 +79,6 @@ char *ft_strnjoin(char *line, char *buffer, ssize_t length)
 	while (i < length)
 		marge[j++] = buffer[i++];
 	marge[j] = '\0';
+	free(line);
 	return (marge);
 }
-
-// void	*ft_memcpy(void *dest, const void *src, size_t n)
-// {
-// 	unsigned char	*d;
-// 	unsigned char	*s;
-
-// 	d = (unsigned char *)dest;
-// 	s = (unsigned char *)src;
-// 	while (n)
-// 	{
-// 		*d = *s;
-// 		d++;
-// 		s++;
-// 		n--;
-// 	}
-// 	return (dest);
-// }
-
-// void	ft_bzero(void *s, size_t n)
-// {
-// 	unsigned char	*ptr;
-
-// 	ptr = s;
-// 	while (n != 0)
-// 	{
-// 		*ptr = 0;
-// 		ptr++;
-// 		n--;
-// 	}
-// }
-
-// void	*ft_calloc(size_t nmemb, size_t size)
-// {
-// 	void	*ptr;
-
-// 	if (nmemb != 0 && size > __SIZE_MAX__ / nmemb)
-// 		return (NULL);
-// 	ptr = malloc(nmemb * size);
-// 	if (!ptr)
-// 		return (NULL);
-// 	ft_bzero(ptr, nmemb * size);
-// 	return (ptr);
-// }
-
